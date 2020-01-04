@@ -18,10 +18,17 @@ import (
 	"github.com/aquasecurity/trivy-db/pkg/db"
 )
 
-const (
+var (
 	owner = "aquasecurity"
 	repo  = "trivy-db"
 )
+
+func init() {
+	envOwner := os.Getenv("GITHUB_OWNER")
+	if envOwner != "" {
+		owner = envOwner
+	}
+}
 
 type RepositoryInterface interface {
 	ListReleases(ctx context.Context, opt *github.ListOptions) (releases []*github.RepositoryRelease, response *github.Response, err error)

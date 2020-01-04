@@ -81,4 +81,5 @@ jobs:
       run: ./trivy-db upload --dir assets
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_OWNER: mozillazg
 
